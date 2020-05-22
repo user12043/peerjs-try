@@ -9,12 +9,37 @@ const connect = () => {
   console.log(username.value);
   console.log(remoteUsername.value);
 
-  peer = new Peer(username.value, {
+  const peerOptions = {
     key: "peerjs",
     host: serverAddress.value,
     port: serverPort.value,
     debug: 3
-  });
+  };
+
+  const config = {
+    iceServers: [],
+    sdpSemantics: "unified-plan"
+  };
+
+  if (stunServerAddress.value !== "") {
+    if (!peerOptions.config) {
+      peerOptions.config = config;
+    }
+    peerOptions.config.iceServers.push({
+      urls: "stun:" + stunServerAddress.value
+    });
+  }
+
+  if (turnServerAddress.value !== "") {
+    if (!peerOptions.config) {
+      peerOptions.config = config;
+    }
+    peerOptions.config.iceServers.push({
+      urls: "turn:" + turnServerAddress.value
+    });
+  }
+
+  peer = new Peer(username.value);
 
   peer.on("call", onCall);
 
