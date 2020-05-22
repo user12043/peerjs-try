@@ -13,7 +13,7 @@ const connect = () => {
     debug: 3
   };
 
-  if (serverAddress !== "") {
+  if (serverAddress.value !== "") {
     peerOptions.host = serverAddress.value;
   }
 
