@@ -1,3 +1,5 @@
+localStream = null;
+
 const detectDevices = (deviceInfos) => {
   for (let i = 0; i !== deviceInfos.length; ++i) {
     const deviceInfo = deviceInfos[i];
