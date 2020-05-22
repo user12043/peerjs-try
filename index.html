@@ -13,33 +13,45 @@
       <caption id="header" onload="window.header = this;"></caption>
       <tr>
         <td>
-          <span>Signaling Server addres:</span>
-          <input
-            type="text"
-            id="serverAddress"
-            value="localhost"
-            onload="window.serverAddress = this;"
-          />
-          <input
-            type="text"
-            id="serverPort"
-            value="9000"
-            onload="window.serverPort = this;"
-          />
-          <span>STUN Server addres:</span>
-          <input
-            type="text"
-            id="stunServerAddress"
-            value=""
-            onload="window.stunServerAddress = this;"
-          />
-          <span>TURN Server addres:</span>
-          <input
-            type="text"
-            id="turnServerAddress"
-            value=""
-            onload="window.turnServerAddress = this;"
-          />
+          <div>
+            <span>Signaling Server addres:</span>
+            <input
+              type="text"
+              id="serverAddress"
+              value="localhost"
+              onload="window.serverAddress = this;"
+            />
+            <input
+              type="text"
+              id="serverPort"
+              value="9000"
+              onload="window.serverPort = this;"
+            />
+            <input
+              type="text"
+              id="serverKey"
+              value="peerjs"
+              onload="window.serverKey = this;"
+            />
+          </div>
+          <div>
+            <span>STUN Server addres:</span>
+            <input
+              type="text"
+              id="stunServerAddress"
+              value=""
+              onload="window.stunServerAddress = this;"
+            />
+          </div>
+          <div>
+            <span>TURN Server addres:</span>
+            <input
+              type="text"
+              id="turnServerAddress"
+              value=""
+              onload="window.turnServerAddress = this;"
+            />
+          </div>
         </td>
         <td>
           <span>Username:</span>

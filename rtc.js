@@ -10,11 +10,20 @@ const connect = () => {
   console.log(remoteUsername.value);
 
   const peerOptions = {
-    key: "peerjs",
-    host: serverAddress.value,
-    port: serverPort.value,
     debug: 3
   };
+
+  if (serverAddress !== "") {
+    peerOptions.host = serverAddress.value;
+  }
+
+  if (serverPort.value !== "") {
+    peerOptions.port = serverPort.value;
+  }
+
+  if (serverKey.value !== "") {
+    peerOptions.key = serverKey.value;
+  }
 
   const config = {
     iceServers: [],
@@ -39,7 +48,7 @@ const connect = () => {
     });
   }
 
-  peer = new Peer(username.value);
+  peer = new Peer(username.value, peerOptions);
 
   peer.on("call", onCall);
 
@@ -54,6 +63,8 @@ const connect = () => {
   dataConnection.on("open", function(connection) {
     console.log("Data connection OK");
   });
+
+  dataConnection.on("data", onData);
 };
 
 // when receive a call
@@ -71,10 +82,12 @@ const onCall = async (mediaConnection) => {
 
 // remote data connection
 const onDataConnection = async (dataConnection) => {
-  dataConnection.on("data", (data) => {
-    receiveText.append(data + "\n");
-    console.log("Message received! ", data);
-  });
+  dataConnection.on("data", onData);
+};
+
+const onData = (data) => {
+  receiveText.append(data + "\n");
+  console.log("Message received! ", data);
 };
 
 const call = async () => {
