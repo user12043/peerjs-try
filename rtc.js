@@ -104,7 +104,7 @@ const call = async () => {
 
 const hangup = () => {
   if (peer) {
-    peer.destory();
+    peer.destroy();
   }
   localStream.getTracks().forEach((t) => t.stop());
   localStream = null;

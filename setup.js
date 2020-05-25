@@ -40,10 +40,6 @@ const startSelf = async () => {
   }
   const vDevId = videoDevices.value;
   const aDevId = audioDevices.value;
-  // const constraints = {
-  //   audio: { deviceId: aDevId ? { exact: aDevId } : undefined },
-  //   video: { deviceId: vDevId ? { exact: vDevId } : undefined }
-  // };
   const constraints = {};
   if (videoCheck.checked) {
     constraints.video = { deviceId: vDevId ? { exact: vDevId } : undefined };
@@ -55,6 +51,7 @@ const startSelf = async () => {
     .getUserMedia(constraints)
     .then((stream) => {
       window.localStream = stream;
+      selfVideo.srcObject = window.localStream;
     })
     .catch((error) => console.log("Error start self", error));
 };
