@@ -5,12 +5,16 @@
   "main": "index.js",
   "scripts": {
     "start": "peerjs --port 9000 --key peerjs",
+    "start:secure": "peerjs --port 9000 --key peerjs --ssl-cert server.cert --ssl-key server.key",
+    "serve": "serve",
+    "serve:secure": "serve --ssl-cert server.cert --ssl-key server.key",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "peer": "^0.5.3"
+    "peer": "^0.5.3",
+    "serve": "^11.3.1"
   }
 }
